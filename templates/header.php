@@ -1,12 +1,12 @@
 <?php
-include_once"process/conexao.php";
+include_once "process/conexao.php";
 
 $msg = [];
 
 if (isset($_SESSION["msg"])) {
 
     $msg = $_SESSION["msg"];
-    $status = $_SESSION["status"]; 
+    $status = $_SESSION["status"];
 
     $_SESSION["msg"] = "";
     $_SESSION["status"] = "";
@@ -15,6 +15,7 @@ if (isset($_SESSION["msg"])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +28,7 @@ if (isset($_SESSION["msg"])) {
     <!-- App CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
@@ -42,8 +44,8 @@ if (isset($_SESSION["msg"])) {
             </div>
         </nav>
     </header>
-    <?php if($msg != ""): ?>
-    <div class="alert alert-<?= $status ?>">
-        <p><?= $msg ?></p>
-    </div>
+    <?php if ($msg != "") : ?>
+        <div class="alert alert-<?= $status ?>">
+            <p><?= $msg ?></p>
+        </div>
     <?php endif; ?>
