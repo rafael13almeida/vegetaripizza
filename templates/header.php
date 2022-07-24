@@ -1,7 +1,7 @@
 <?php
 include_once "process/conexao.php";
 
-$msg = [];
+$msg = "";
 
 if (isset($_SESSION["msg"])) {
 
