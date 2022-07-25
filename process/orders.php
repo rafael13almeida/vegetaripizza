@@ -91,6 +91,23 @@ $status = $statusQuery->fetchAll();
 
         $_SESSION["msg"] = "Pedido removido !";
         $_SESSION["status"] = "success";
+
+    } else if ($type === "update") {
+
+        $pizzaId = $_POST["id"];
+
+        $statusId = $_POST["status"];
+
+        $updateQuery = $conexao->prepare("UPDATE pedidos SET status_id = :status_id WHERE pizza_id = :pizza_id");
+        $updateQuery->bindParam(":pizza_id", $pizzaId, PDO::PARAM_INT);
+        $updateQuery->bindParam(":status_id", $statusId, PDO::PARAM_INT);
+
+        $updateQuery->execute();
+
+        $_SESSION["msg"] = "Pedido atualizado !";
+        $_SESSION["status"] = "success";
+
+
     }
 
     header("Location: ../dashboard.php");
