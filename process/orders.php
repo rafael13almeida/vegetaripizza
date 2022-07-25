@@ -78,7 +78,22 @@ $status = $statusQuery->fetchAll();
 
 } elseif ($method === "POST") {
 
+    $type = $_POST["type"];
 
+    if ($type === "delete") {
+
+        $pizzaId = $_POST["id"];
+
+        $deleteQuery = $conexao->prepare("DELETE FROM pedidos WHERE pizza_id = :pizza_id;");
+        $deleteQuery->bindParam(":pizza_id", $pizzaId, PDO::PARAM_INT);
+
+        $deleteQuery->execute();
+
+        $_SESSION["msg"] = "Pedido removido !";
+        $_SESSION["status"] = "success";
+    }
+
+    header("Location: ../dashboard.php");
 
 }
 
